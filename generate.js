@@ -17,12 +17,14 @@ function main() {
 
   alert(
     supply +
-      " images will be generated. When the script is finished, go to the folder completed > images."
+      " images will be generated. When the script is finished, the generated images will be in the folder: completed > images."
   );
 
   var groups = app.activeDocument.layerSets;
 
   resetLayers(groups);
+
+// Define rarity - @chicamina
 
   function getRWeights(_str) {
     var weight = Number(_str.split("#").pop());

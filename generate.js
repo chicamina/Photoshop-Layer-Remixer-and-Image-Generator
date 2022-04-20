@@ -1,23 +1,23 @@
-// Simple art generator by HashLips <->
+// Forked from Simple art generator by HashLips <->
 
 #include "./lib/json2.js";
 
 function main() {
   var continueConfirmation = confirm(
-    "You are about to use the HashLips art generator. Are you sure you want to continue?"
+    "You are about to use the Photoshop Layer Remixer and Image Generator. Continue?"
   );
 
   if (!continueConfirmation) return;
 
   var supply = prompt("How many images do you want to generate?", "10");
 
-  var name = prompt("What is the name of your collection?", "");
+  var name = prompt("Give your collection a name", "");
 
-  var description = prompt("What is the description for your collection?", "");
+  var description = prompt("Write a description of your collection", "");
 
   alert(
     supply +
-      " images will be generated, so sit back relax and enjoy the art being generated."
+      " images will be generated. When the script is finished, go to the folder completed > images."
   );
 
   var groups = app.activeDocument.layerSets;
@@ -89,7 +89,7 @@ function resetLayers(_groups) {
 }
 
 function saveImage(_edition) {
-  var saveFile = new File(toFolder("build/images") + "/" + _edition + ".png");
+  var saveFile = new File(toFolder("completed/images") + "/" + _edition + ".png");
   exportOptions = new ExportOptionsSaveForWeb();
   exportOptions.format = SaveDocumentType.PNG;
   exportOptions.PNG24 = false;
@@ -103,7 +103,7 @@ function saveImage(_edition) {
 }
 
 function saveMetadata(_data) {
-  var file = new File(toFolder("build/metadata") + "/" + _data.edition + ".json");
+  var file = new File(toFolder("completed/metadata") + "/" + _data.edition + ".json");
   file.open("w");
   file.write(JSON.stringify(_data));
   file.close();
